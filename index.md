@@ -1,3 +1,1 @@
-liushuyu
-Tom
 Lucy
