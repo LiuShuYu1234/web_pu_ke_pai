@@ -1,0 +1,67 @@
+#include<stdio.h>
+int fibonacci(int num)
+{
+	int number,i,A,j=0,m;
+	int a[1000][1]={0},b[1000][1]={0},c[1000][1]={0};
+	a[0][0]=1;
+	b[0][0]=1;
+	if(num==1||num==2)
+	{
+		for(i=0;i<num;i++)
+		{
+			printf("1\n",i+1);
+		}
+	}
+	else
+	{
+		for(i=0;i<2;i++)
+		{
+			printf("1\n",i+1);
+		}
+		for(i=2;i<num;i++)
+		{
+			for(m=0;m<1000;m++)
+			{
+				c[m][0]=0;
+			}
+			for(m=0;m<1000;m++)
+			{
+				A=a[m][0]+b[m][0];
+				c[m][0]+=A;
+				if(c[m][0]>9)
+				{
+					c[m][0]=c[m][0]-10;
+					c[m+1][0]++;
+				}
+			}
+			for(m=0;m<1000;m++)
+			{
+				a[m][0]=b[m][0];
+			}
+			for(m=0;m<1000;m++)
+			{
+				b[m][0]=c[m][0];
+			}
+			for(m=999;m>=0;m--)
+			{
+				if(c[m][0]==0)
+				{
+					j=m;
+				}
+				else
+				{
+					break;
+				}
+			}
+			for(m=j-1;m>=0;m--)
+			{
+				printf("%d",c[m][0]);
+			}
+			printf("\n");
+		}
+	}
+} 
+int main()
+{
+	fibonacci(200);
+}
